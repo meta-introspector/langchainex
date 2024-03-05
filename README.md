@@ -1,3 +1,11 @@
+ 1169  . ~/.asdf/asdf.sh 
+ 1170  iex -S mix run
+ 1171  mix
+ 1172  mix deps.get
+ 1173  mix
+ 1174  iex -S mix run
+ 1175  history
+ 
 # LangchainEx   
 
 
@@ -32,24 +40,53 @@ end
 
 ```elixir
   # Language Model (text input) examples
-  goose = %LangChain.Providers.GooseAi.LanguageModel{
-    model_name: "gpt-neo-20b"
-  }
+  goose = %LangChain.Providers.GooseAi.LanguageModel{    model_name: "gpt-neo-20b"  }
   goose_answer = LangChain.LanguageModelProtocol.ask(goose, "What is your favorite programming language?")
   IO.puts "Goose says: #{goose_answer}"
   # Goose says: My favorite  programming language is Elixir with a side-order of Rust.
 
-  openai = %LangChain.Providers.OpenAI.LanguageModel{
-    model_name: "gpt-3.5-turbo"
+ex(2)> model
+%LangChain.Providers.Huggingface.LanguageModel{
+  provider: :huggingface,
+  model_name: "gpt2",
+  language_action: :conversation,
+  max_new_tokens: 25,
+  temperature: 0.1,
+  top_k: nil,
+  top_p: nil,
+  polling_interval: 2000,
+  fallback_chat_model: %{
+    language_action: :conversation,
+    max_new_tokens: 25,
+    model_name: nil,
+    polling_interval: 2000,
+    provider: :huggingface,
+    temperature: 0.5,
+    top_k: nil,
+    top_p: nil
   }
-  openai_answer = LangChain.LanguageModelProtocol.ask(openai, "What is your favorite programming language?")
+}
+
+  model = %LangChain.Providers.Huggingface.LanguageModel{    model_name: "gpt2"  }
+  model_answer = LangChain.LanguageModelProtocol.ask(model, "What is your favorite programming language?")
+
+model = %LangChain.Providers.Bumblebee.LanguageModel{    model_name: "gpt2"  }
+%LangChain.Providers.Bumblebee.LanguageModel{
+  provider: :bumblebee,
+  model_name: "gpt2",
+  max_new_tokens: 25,
+  temperature: 0.5,
+  top_k: nil,
+  top_p: nil
+}
+iex(6)> 
   IO.puts "OpenAI says: #{openai_answer}"
   # OpenAI says: I don't know for sure, but I don't trust languages that can't operate more than one thread at a time.
 
   cohere = LangChain.Providers.Cohere.LanguageModel{
     model_name: "command"
   }
-  response = LangChain.LanguageModelProtocol.ask(@cohere_model, "Why is Elixir a good language for AI applications?")
+model = %LangChain.Providers.Bumblebee.LanguageModel{    model_name: "gpt2"  } 
   IO.puts "Cohere says: #{response}"
 
 

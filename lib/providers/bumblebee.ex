@@ -91,8 +91,10 @@ defmodule LangChain.Providers.Bumblebee.LanguageModel do
           {:ok, tokenizer} = Bumblebee.load_tokenizer({:hf, config.model_name})
           execute_model(model.spec.architecture, config, prompt, model, tokenizer)
         rescue
-          _e ->
-            "Model Bumblebee #{config.model_name}: I had a system malfunction trying to process that request."
+          e ->
+	    msg = Exception.format(:error, e, __STACKTRACE__)
+
+            "Model Bumblebee #{config.model_name}: I had a system malfunction trying to process that request.  ERROR: #{msg}"
         end
       end
 
