@@ -1,11 +1,11 @@
  1169  . ~/.asdf/asdf.sh 
  1170  iex -S mix run
-<<<<<<< HEAD
+
  1171  mix
  1172  mix deps.get
  1173  mix
  1174  iex -S mix run
-=======
+
   mix
   asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
@@ -20,7 +20,6 @@ mix
  1172  mix deps.get
  1173  mix
  iex -S mix run
->>>>>>> aav3-1/primary
  1175  history
  
 # LangchainEx   
