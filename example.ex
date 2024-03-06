@@ -1,6 +1,10 @@
-# iex -S mix run
+# mix run example.ex
 
-"../bloke/top100.csv"
+{:ok, hostname} = :inet.gethostname
+ 
+File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
+
+"./batches/#{hostname}" 
     |> Path.expand(__DIR__)
     |> File.stream!
     |> Stream.drop(1)
@@ -15,4 +19,8 @@
     IO.puts response
     response = LangChain.LanguageModelProtocol.ask(model, "Why is Elixir a good language for AI applications? Because [MASK]")
     IO.puts response
+
+
+    File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
+
 end)
