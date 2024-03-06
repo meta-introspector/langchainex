@@ -1,9 +1,19 @@
  1169  . ~/.asdf/asdf.sh 
  1170  iex -S mix run
- 1171  mix
+  mix
+  asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf install elixir 1.15.4-otp-26 
+asdf install erlang 26.0.2
+asdf global erlang 26.0.2
+asdf global 
+mix install
+mix deps.get
+mix 
+
  1172  mix deps.get
  1173  mix
- 1174  iex -S mix run
+ iex -S mix run
  1175  history
  
 # LangchainEx   
