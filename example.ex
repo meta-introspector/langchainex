@@ -1,12 +1,12 @@
 # mix run example.ex
 
 {:ok, hostname} = :inet.gethostname
- 
-File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
+IO.puts "looking for inputs in ./batches/#{hostname}" 
+#File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
 
 "./batches/#{hostname}" 
 # iex -S mix run
-File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
+#File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
     
 
     |> Path.expand(__DIR__)
@@ -24,6 +24,6 @@ File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for
     response = LangChain.LanguageModelProtocol.ask(model, "Why is Elixir a good language for AI applications? Because [MASK]")
     IO.puts response
 
-    File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
+ #   File.rm_rf("/home/ubuntu/.cache/bumblebee/huggingface/") # delete all models for space
 end)
 
